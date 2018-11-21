@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="node_modules/c3/c3.min.css">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="node_modules/dexie/dist/dexie.js"></script>
+    <script src="node_modules/d3/dist/d3.min.js"></script>
+    <script src="node_modules/c3/c3.min.js"></script>
+</head>
+<body>
+<div id="installBtnHolder">
+    <span>Add to your home screen</span>
+    <button>Install</button>
+</div>
+<div id="offline" hidden="true">
+    <p>Offline</p>
+</div>
+
+<section id="controls">
+    <div>
+        <h3>Kedvenc valuták</h3>
+
+        <label for="btcFav">Bitcoin</label>
+        <input type="checkbox" class="fav-checkbox" id="btcFav" onchange="favouriteChanged('BTC')">
+        <label for="ethFav">Ethereum</label>
+        <input type="checkbox" class="fav-checkbox" id="ethFav" onchange="favouriteChanged('ETH')">
+        <label for="ltcFav">Litecoin</label>
+        <input type="checkbox" class="fav-checkbox" id="ltcFav" onchange="favouriteChanged('LTC')">
+        <label for="dogeFav">Dogecoin</label>
+        <input type="checkbox" class="fav-checkbox" id="dogeFav" onchange="favouriteChanged('DOGE')">
+    </div>
+    <div>
+        <h3>Valuta választó</h3>
+
+        <select name="coinSelector" id="coinSelector" onchange="coinSelected()">
+            <option value="BTC">Bitcoin</option>
+            <option value="ETH">Ethereum</option>
+            <option value="LTC">Litecoin</option>
+            <option value="DOGE">Dogecoin</option>
+        </select>
+    </div>
+</section>
+
+<hr/>
+
+<section id="charts">
+    <div id="usd" class="chart"></div>
+    <div id="huf" class="chart"></div>
+    <div id="noData" hidden>Nincs elérhető adat</div>
+</section>
+
+<!--<script src="scripts/push.js" async></script>-->
+<!--<script src="scripts/notification.js" async></script>-->
+<script src="scripts/db.js" async></script>
+<script src="scripts/chart.js" async></script>
+<script src="scripts/app.js" async></script>
+</body>
+</html>
