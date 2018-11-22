@@ -1,6 +1,16 @@
 (function () {
     console.log('Application started');
 
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+            .then(registration => {
+                console.log('Service Worker Registered');
+            })
+            .catch(err => {
+                console.log('SW registration failed', err);
+            });
+    }
+
     downloadAndUpdateCharts('BTC');
 })();
 
